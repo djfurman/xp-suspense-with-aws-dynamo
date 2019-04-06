@@ -1,0 +1,30 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Setup a sample caching table in DynamoDB
+Resources:
+  CachingTestTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: cacheItem
+        AttributeType: S
+      KeySchema:
+      - AttributeName: cacheItem
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 1
+      SSESpecification:
+        SSEEnabled: true
+      TableName: Djf-WebDev-Cache
+      Tags:
+      - Key: Contact
+        Value: djfurman@gmail.com
+      - Key: Purpose
+        Value: Test a Caching Table
+      - Key: Environment
+        Value: Experiment
+      - Key: CreatedVia
+        Value: CFT
+      - Key: Customer
+        Value: Self
